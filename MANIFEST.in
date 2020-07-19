@@ -1,0 +1,4 @@
+include README.md
+recursive-include octoprint_virtual_printer_settings/templates *
+recursive-include octoprint_virtual_printer_settings/translations *
+recursive-include octoprint_virtual_printer_settings/static *
