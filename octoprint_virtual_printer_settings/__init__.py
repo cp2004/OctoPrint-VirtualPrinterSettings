@@ -16,7 +16,7 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin):
 	def get_template_configs(self):
 		return [dict(
 			type='settings',
-			name='Virtual Printer 2',
+			name='Virtual Printer',
 			template='virtual_printer_new_settings.jinja2',
 			replaces='plugin_virtual_printer',
 			custom_bindings=False
