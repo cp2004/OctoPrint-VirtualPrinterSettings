@@ -1,0 +1,119 @@
+<h4>Firmware properties</h4>
+<form class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" style="padding-left: 10px">Firmware Name</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.virtual_printer.firmwareName">
+            <p class="help-block">Firmware name to report (useful for testing firmware detection)</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Force checksum</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.forceChecksum">
+            <p class="help-block">Whether to force checksums and line number in the communication (like Repetier), if set to true printer will only accept commands that come with linenumber and checksum and throw an error for lines that don't.</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">RX Buffer</label>
+        <div class="controls">
+            <input type="number" class="input-medium" data-bind="value: settings.plugins.virtual_printer.rxBuffer">
+            <p class="help-block">Size of the simulated RX buffer in bytes, when it's full a send from OctoPrint's side will block</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Command buffer</label>
+        <div class="controls">
+            <input type="number" class="input-medium" data-bind="value: settings.plugins.virtual_printer.commandBuffer">
+            <p class="help-block">Size of simulated command buffer, number of commands. If full, buffered commands will block until a slot frees up</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Support M112</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.supportM112">
+            <p class="help-block">Whether to support the M112 command with simulated kill</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Echo on M117</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.echoOnM117">
+            <p class="help-block">Whether to send messages received via M117 back as "echo:" lines</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Broken M29</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.brokenM29">
+            <p class="help-block">Whether to simulate broken M29 behaviour (missing ok after response)</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Support F command</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.supportF">
+            <p class="help-block">Whether F is supported as individual command</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Send 'busy'</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.sendBusy">
+            <p class="help-block">Send "busy" messages if busy processing something</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Simulate reset</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.simulateReset">
+            <p class="help-block">Simulate a reset on connect</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">M115 Format string</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.virtual_printer.m115FormatString">
+            <p class="help-block">Format string for M115 output. Placeholders:<br> <code>firmware_name</code>: The firmware name as defined in firmwareName</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">M115 Report Capabilities</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.m115ReportCapabilities">
+            <p class="help-block">Whether to include capability report in M115 output</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label">CAPABILITIES:</label>
+        <div class="controls">
+            <p>Currently unavailable, coming soon! <!-- TODO Make viewable & editable --></p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label">RESET LINES:</label>
+        <div class="controls">
+            <p>Currently unavailable, coming soon! <!-- TODO Make viewable & editable --></p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label">PREPARED OKs:</label>
+        <div class="controls">
+            <p>Currently unavailable, coming soon! <!-- TODO Make viewable & editable --></p>
+        </div>
+    </div>
+</form>

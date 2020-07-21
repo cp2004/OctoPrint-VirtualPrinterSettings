@@ -1,0 +1,31 @@
+<h1>Virtual Printer</h1>
+<form class="form-horizontal">
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.enabled"> {{ _('Enable the virtual printer') }}
+                <span class="help-block">{{ _('If enabled, an additional serial port <code>VIRTUAL</code> will be available for connecting, backed by a fake printer implementation. Useful for development.') }}</span>
+            </label>
+        </div>
+    </div>
+    <hr>
+    <div class="tabbable" data-bind="visible: settings.plugins.virtual_printer.enabled" style="padding-top: 10px">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#tabPhysical" data-toggle="tab">Physical</a></li>
+            <li><a href="#tabFirmware" data-toggle="tab">Firmware</a></li>
+            <li><a href="#tabResponses" data-toggle="tab">Responses</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tabPhysical">
+                {% include 'settings_tab_physical.jinja2' %}
+            </div>
+            <div class="tab-pane" id="tabFirmware">
+                {% include 'settings_tab_firmware.jinja2' %}
+            </div>
+            <div class="tab-pane" id="tabResponses">
+                {% include 'settings_tab_responses.jinja2' %}
+            </div>
+        </div>
+    </div>
+</form>
+<span><i>Settings interface provided by plugin <a href="https://github.com/cp2004/OctoPrint-VirtualPrinterSettings">Virtual Printer Settings</a> v0.1.0</i></span>

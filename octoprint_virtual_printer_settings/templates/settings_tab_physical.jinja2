@@ -1,0 +1,51 @@
+<h4>Physical properties</h4>
+<form class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label"style="padding-right: 10px">Number of Extruders</label>
+        <div class="controls">
+            <input type="number" class="input-medium" data-bind="value: settings.plugins.virtual_printer.numExtruders">
+            <p class="help-block">Whether to send an additional "ok" after a resend request (like Repetier)</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label"style="padding-right: 10px">PINNED EXTRUDERS</label>
+        <div class="controls">
+            <p>Currently unavailable, coming soon! <!-- TODO Make viewable & editable --></p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label"style="padding-right: 10px">Has bed</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.hasBed">
+            <p class="help-block">Whether the simulated printer should also simulate a heated bed or not.</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label"style="padding-right: 10px">Has chamber</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.hasChamber">
+            <p class="help-block">Whether the simulated printer should also simulate a heated chamber or not.</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label"style="padding-right: 10px">Has chamber</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.sharedNozzle">
+            <p class="help-block">Whether the simulated printer should also simulate a heated chamber or not.</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label"style="padding-right: 10px">Ambient Temperature</label>
+        <div class="controls">
+            <input type="number" class="input-medium" data-bind="value: settings.plugins.virtual_printer.ambientTemperature">
+            <p class="help-block">Simulated ambient temperature in °C</p>
+        </div>
+    </div>
+    <br>
+</form>
+
