@@ -1,6 +1,10 @@
 # Virtual Printer Settings
 
-**TODO:** Describe what your plugin does.
+Adds editable settings to the Virtual Printer in OctoPrint, useful for development.
+
+Note this is only compatible with OctoPrint 1.4.1 or higher (Works with the RCs)
+
+Will be on the official repository once 1.4.1 is out.
 
 ## Setup
 
@@ -9,9 +13,9 @@ or manually using this URL:
 
     https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
 
 ## Configuration
 
-**TODO:** Describe your plugin's configuration options (if any).
+Plugin adds settings to OctoPrint's UI that are [documented here](https://docs.octoprint.org/en/1.4.1rc3/development/virtual_printer.html#virtual-printer-configuration-options)
+
+It replaces the original implementation, introduced in OctoPrint 1.4.1
