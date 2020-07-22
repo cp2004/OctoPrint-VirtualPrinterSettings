@@ -32,8 +32,8 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin, octoprint.pl
 
 	def get_update_information(self):
 		return dict(
-			virtual_printer_settings=dict(
-				displayName="Virtual_printer_settings Plugin",
+			virtual_printer2=dict(
+				displayName="Virtual Printer Settings",
 				displayVersion=self._plugin_version,
 
 				# version check: github repository
@@ -48,7 +48,7 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin, octoprint.pl
 		)
 
 
-__plugin_name__ = "Virtual Printer Settings Plugin"
+__plugin_name__ = "Virtual Printer Settings"
 __plugin_pythoncompat__ = ">=2.7,<4" # python 2 and 3
 
 def __plugin_load__():
