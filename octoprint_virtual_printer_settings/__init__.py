@@ -11,26 +11,29 @@ from __future__ import absolute_import
 
 import octoprint.plugin
 
-class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin):
+
+class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin, octoprint.plugin.AssetPlugin):
 
 	def get_template_configs(self):
 		return [dict(
-			type='settings',
-			name='Virtual Printer',
-			template='virtual_printer_new_settings.jinja2',
-			replaces='plugin_virtual_printer',
+			type="settings",
+			name="Virtual Printer",
+			replaces="plugin_virtual_printer",
+			template="virtual_printer2_settings.jinja2",
 			custom_bindings=False
 		)]
+
+	def get_assets(self):
+		return dict(
+			js=["js/jquery-ui.min.js", "js/knockout-sortable.js", "js/virtual_printer_settings.js"]
+		)
 
 	##~~ Softwareupdate hook
 
 	def get_update_information(self):
-		# Define the configuration for your plugin to use with the Software Update
-		# Plugin here. See https://docs.octoprint.org/en/master/bundledplugins/softwareupdate.html
-		# for details.
 		return dict(
-			virtual_printer_settings=dict(
-				displayName="Virtual_printer_settings Plugin",
+			virtual_printer2=dict(
+				displayName="Virtual Printer Settings",
 				displayVersion=self._plugin_version,
 
 				# version check: github repository
@@ -45,16 +48,7 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin):
 		)
 
 
-# If you want your plugin to be registered within OctoPrint under a different name than what you defined in setup.py
-# ("OctoPrint-PluginSkeleton"), you may define that here. Same goes for the other metadata derived from setup.py that
-# can be overwritten via __plugin_xyz__ control properties. See the documentation for that.
-__plugin_name__ = "Virtual Printer Settings Plugin"
-
-# Starting with OctoPrint 1.4.0 OctoPrint will also support to run under Python 3 in addition to the deprecated
-# Python 2. New plugins should make sure to run under both versions for now. Uncomment one of the following
-# compatibility flags according to what Python versions your plugin supports!
-#__plugin_pythoncompat__ = ">=2.7,<3" # only python 2
-#__plugin_pythoncompat__ = ">=3,<4" # only python 3
+__plugin_name__ = "Virtual Printer Settings"
 __plugin_pythoncompat__ = ">=2.7,<4" # python 2 and 3
 
 def __plugin_load__():

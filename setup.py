@@ -4,7 +4,7 @@
 ### Do not forget to adjust the following variables to your own plugin.
 
 # The plugin's identifier, has to be unique
-plugin_identifier = "virtual_printer_settings"
+plugin_identifier = "virtual_printer2"
 
 # The plugin's python package, should be "octoprint_<plugin identifier>", has to be unique
 plugin_package = "octoprint_virtual_printer_settings"
