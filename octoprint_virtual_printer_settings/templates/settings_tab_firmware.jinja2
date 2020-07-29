@@ -105,8 +105,8 @@
     <br>
     <div class="control-group">
         <label class="control-label">RESET LINES:</label>
-        <div class="controls">
-            <p>Currently unavailable, coming soon! <!-- TODO Make viewable & editable --></p>
+        <div class="controls" data-bind="foreach: { data: settings.plugins.virtual_printer.resetLines }">
+             <input type="text" data-bind="value: $data">
         </div>
     </div>
     <br>
