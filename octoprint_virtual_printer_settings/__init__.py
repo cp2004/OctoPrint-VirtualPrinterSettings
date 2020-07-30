@@ -5,7 +5,6 @@ import octoprint.plugin
 
 
 class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin,
-								   octoprint.plugin.AssetPlugin,
 								   octoprint.plugin.RestartNeedingPlugin):
 
 	def get_template_configs(self):
@@ -16,11 +15,6 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin,
 			template="virtual_printer2_settings.jinja2",
 			custom_bindings=False
 		)]
-
-	def get_assets(self):
-		return dict(
-			js=["js/jquery-ui.min.js", "js/knockout-sortable.js", "js/virtual_printer_settings.js"]
-		)
 
 	##~~ Softwareupdate hook
 
