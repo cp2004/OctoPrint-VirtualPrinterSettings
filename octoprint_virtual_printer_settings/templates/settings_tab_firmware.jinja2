@@ -106,19 +106,11 @@
     <div class="control-group">
         <label class="control-label">RESET LINES:</label>
         <div class="controls">
-            <div class="input-append"><input id="resetline_input" type="text" class="input input-large"/><span class="btn btn-mini btn-primary add-on" data-bind="click: function(){settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></span></div>
+            <input id="resetline_input" type="text" class="input input-large"/><button class="btn btn-primary" data-bind="click: function(){settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></button><br>
+            <select size="5" class="input-large" id="resetline_item_remove" style="width: 224px;" data-bind="options: settings.plugins.virtual_printer.resetLines" ></select><button class="btn btn-danger" style="vertical-align: bottom;" data-bind="click: function(){console.log($('#resetline_item_remove').val());settings.plugins.virtual_printer.resetLines.remove($('#resetline_item_remove').val());$(this).blur();}"><i class="fa fa-trash-o"></i></button>
         </div>
     </div>
     <br>
-    <!-- ko foreach: { data: settings.plugins.virtual_printer.resetLines, as: 'item' } -->
-    <div class="control-group">
-        <label class="control-label"> </label>
-        <div class="controls">
-            <div class="input-prepend"><span class="btn btn-danger add-on" data-bind="click: function(){$root.settings.plugins.virtual_printer.resetLines.remove(item);}"><i class="fa fa-trash-o"></i></span><input type="text" class="input input-large" data-bind="value: item" readonly /></div>
-        </div>
-    </div>
-    <br>
-    <!-- /ko -->
     <div class="control-group">
         <label class="control-label">PREPARED OKs:</label>
         <div class="controls">
