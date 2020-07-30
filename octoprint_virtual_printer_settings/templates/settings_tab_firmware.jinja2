@@ -104,9 +104,11 @@
     </div>
     <br>
     <div class="control-group">
-        <label class="control-label">RESET LINES:</label>
-        <div class="controls" data-bind="foreach: { data: settings.plugins.virtual_printer.resetLines }">
-             <input type="text" data-bind="value: $data">
+        <label class="control-label">Reset Lines</label>
+        <div class="controls">
+            <input id="resetline_input" type="text" class="input input-xlarge" placeholder="Add a new line"/><button class="btn btn-primary" data-bind="click: function(){settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></button><br>
+            <select size="5" id="resetline_item_remove" style="width: 284px;" data-bind="options: settings.plugins.virtual_printer.resetLines" ></select><button class="btn btn-danger" style="vertical-align: bottom;" data-bind="click: function(){console.log($('#resetline_item_remove').val());settings.plugins.virtual_printer.resetLines.remove($('#resetline_item_remove').val());$(this).blur();}"><i class="fa fa-trash-o"></i></button>
+            <p class="help-block">Lines to send on simulated reset</p>
         </div>
     </div>
     <br>
