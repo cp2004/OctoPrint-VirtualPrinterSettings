@@ -97,13 +97,6 @@
     </div>
     <br>
     <div class="control-group">
-        <label class="control-label">CAPABILITIES:</label>
-        <div class="controls">
-            <p>Currently unavailable, coming soon! <!-- TODO Make viewable & editable --></p>
-        </div>
-    </div>
-    <br>
-    <div class="control-group">
         <label class="control-label">Reset Lines</label>
         <div class="controls">
             <input id="resetline_input" type="text" class="input input-xlarge" placeholder="Add a new line"/><button class="btn btn-primary" data-bind="click: function(){settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></button><br>
@@ -121,4 +114,11 @@
             <p class="help-block">Initial set of prepared oks to use instead of regular ok (e.g. to simulate mis-sent oks) when connection is first established.</p>
         </div>
     </div>
+    <div class="control-group">
+        <label class="control-label">Capability report</label>
+        <div class="controls">
+            <p>Please head to <code>config.yaml</code> to edit the capability report, as described in the virtual printer docs.</p>
+        </div>
+    </div>
+    <br>
 </form>
