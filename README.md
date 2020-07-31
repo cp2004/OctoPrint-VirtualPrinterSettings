@@ -1,10 +1,11 @@
 # Virtual Printer Settings
 
-Adds editable settings to the Virtual Printer in OctoPrint, useful for development.
+Add easily configurable and well organised settings for OctoPrint's virtual printer.
+Overrides the default template which only has an enabling checkbox.
 
-Note this is only compatible with OctoPrint 1.4.1 or higher (Works with the RCs)
+Very useful if you are developing plugins, or even core OctoPrint. No more digging deep into config.yaml and hoping you typed the settings correctly!
 
-Will be on the official repository once 1.4.1 is out.
+#### Warning: Only compatible with OctoPrint 1.4.1 and higher, please update!*
 
 ## Setup
 

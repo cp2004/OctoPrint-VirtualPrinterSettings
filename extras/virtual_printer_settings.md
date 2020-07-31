@@ -48,3 +48,4 @@ Overrides the default template which only has an enabling checkbox.
 
 Very useful if you are developing plugins, or even core OctoPrint. No more digging deep into config.yaml and hoping you typed the settings correctly!
 
+Note that this plugin is only compatible with OctoPrint 1.4.1 and higher.
