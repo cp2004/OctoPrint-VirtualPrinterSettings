@@ -20,3 +20,5 @@ or manually using this URL:
 Plugin adds settings to OctoPrint's UI that are [documented here](https://docs.octoprint.org/en/1.4.1rc3/development/virtual_printer.html#virtual-printer-configuration-options)
 
 It replaces the original implementation, introduced in OctoPrint 1.4.1
+
+![screenshot](extras/settings.png)
