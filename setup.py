@@ -14,14 +14,14 @@ plugin_package = "octoprint_virtual_printer_settings"
 plugin_name = "Virtual Printer Settings"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
-plugin_version = "0.1.1"
+plugin_version = "0.1.2"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
 plugin_description = """Adds configurable settings to the Virtual Printer plugin in OctoPrint's settings panel"""
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
-plugin_author = "Charlie"
+plugin_author = "Charlie Powell"
 
 # The plugin's author's mail address.
 plugin_author_email = "cp2004.github@gmail.com"
