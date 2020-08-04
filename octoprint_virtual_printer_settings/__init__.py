@@ -12,7 +12,7 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin,
             type="settings",
             name="Virtual Printer",
             replaces="plugin_virtual_printer",
-            template="vp_settings.jinja2",
+            template="settings_tab.jinja2",
             custom_bindings=False
         )]
 
