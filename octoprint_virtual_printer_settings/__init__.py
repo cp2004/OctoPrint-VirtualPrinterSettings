@@ -12,14 +12,14 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin,
             type="settings",
             name="Virtual Printer",
             replaces="plugin_virtual_printer",
-            template="vp_settings.jinja2",
+            template="virtual_printer_config.jinja2",
             custom_bindings=False
         )]
 
     # Softwareupdate hook
     def get_update_information(self):
         return dict(
-            vp_settings=dict(
+            virtual_printerconfig=dict(
                 displayName="Virtual Printer Settings",
                 displayVersion=self._plugin_version,
 
