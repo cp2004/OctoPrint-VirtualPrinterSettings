@@ -19,7 +19,7 @@ or manually using this URL:
 
 ## Configuration
 
-Plugin adds settings to OctoPrint's UI that are [documented here](https://docs.octoprint.org/en/1.4.1/development/virtual_printer.html#virtual-printer-configuration-options)
+Plugin adds settings to OctoPrint's UI that are [documented here](https://docs.octoprint.org/en/master/development/virtual_printer.html#virtual-printer-configuration-options)
 
 It replaces the original implementation, introduced in OctoPrint 1.4.1
 
