@@ -3,6 +3,9 @@ from __future__ import absolute_import
 
 import octoprint.plugin
 
+from ._version import get_versions
+__version__ = get_versions()["version"]
+del get_versions
 
 class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin,
                                    octoprint.plugin.RestartNeedingPlugin):
@@ -37,7 +40,7 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin,
 
 __plugin_name__ = "Virtual Printer Settings"
 __plugin_pythoncompat__ = ">=2.7,<4"  # python 2 and 3
-
+__plugin_version__ = __version__
 
 def __plugin_load__():
     global __plugin_implementation__
