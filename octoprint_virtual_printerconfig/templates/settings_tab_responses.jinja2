@@ -59,8 +59,15 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Extended file list</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.extendedFileList">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.sdFiles.size">
             <p class="help-block">Whether M20 responses will include filesize or not</p>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Long name reporting</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.sdFiles.longname">
+            <p class="help-block">Whether M20 responses will include longname or not (only if size is checked as well)</p>
         </div>
     </div>
     <br>
@@ -79,11 +86,45 @@
             <p class="help-block">Interval in which to send "wait" lines when rx buffer is empty</p>
         </div>
     </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Resend ratio</label>
+        <div class="controls">
+            <input type="number" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.resend_ratio">
+            <p class="help-block">Ratio of commands that are resent (resend every <span data-bind="text: resend_every_n"></span> lines)</p>
+        </div>
+    </div>
+    <br>
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">'ok' string format</label>
         <div class="controls">
             <input type="text" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.okFormatString">
             <p class="help-block">Format string for ok response. Placeholders:<br> <code>lastN</code>: Last acknowledged line number<br> <code>buffer</code>: empty slots in internal command buffer</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">M105 Target format</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.m105TargetFormatString">
+            <p class="help-block">
+                Format string for M105 response when there is a target temp. Placeholders:
+                <br> <code>heater</code>: Heater ID (eg. T0, T1, B)
+                <br> <code>actual</code>: The actual temperature of the heater
+                <br> <code>target</code>: The target temperature of the heater
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">M105 No target format</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.m105TargetFormatString">
+            <p class="help-block">
+                Format string for M105 response when there is <strong>no</strong> target temp. Placeholders:
+                <br> <code>heater</code>: Heater ID (eg. T0, T1, B)
+                <br> <code>actual</code>: The actual temperature of the heater
+            </p>
         </div>
     </div>
 </form>

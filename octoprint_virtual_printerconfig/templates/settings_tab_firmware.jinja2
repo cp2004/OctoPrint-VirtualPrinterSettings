@@ -97,6 +97,26 @@
     </div>
     <br>
     <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Virtual EEPROM</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.enable_eeprom">
+            <p class="help-block">
+                Enable a 'virtual' EEPROM to persist printer configuration across reboots.
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Support M503</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.support_M503">
+            <p class="help-block">
+                Makes the printer respond current settings on M503 command.
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
         <label class="control-label">Reset Lines</label>
         <div class="controls">
             <input id="resetline_input" type="text" class="input input-xlarge" placeholder="Add a new line"/><button class="btn btn-primary" data-bind="click: function(){settingsViewModel.settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></button><br>
