@@ -7,8 +7,10 @@ from ._version import get_versions
 __version__ = get_versions()["version"]
 del get_versions
 
-class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin,
-                                   octoprint.plugin.RestartNeedingPlugin):
+class VirtualPrinterSettingsPlugin(
+    octoprint.plugin.TemplatePlugin,
+    octoprint.plugin.AssetPlugin
+):
 
     def get_template_configs(self):
         return [dict(
@@ -16,8 +18,13 @@ class VirtualPrinterSettingsPlugin(octoprint.plugin.TemplatePlugin,
             name="Virtual Printer",
             replaces="plugin_virtual_printer",
             template="settings_replacement.jinja2",
-            custom_bindings=False
+            custom_bindings=True,
         )]
+
+    def get_assets(self):
+        return  {
+            "js": ["js/virtual_printerconfig.js"],
+        }
 
     # Softwareupdate hook
     def get_update_information(self):
