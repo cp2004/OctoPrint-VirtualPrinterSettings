@@ -40,14 +40,9 @@ $(function () {
         };
 
         self.onAllBound = self.onEventSettingsUpdated = self.onServerReconnect = function () {
-            console.log(
-                self.settingsViewModel.settings.plugins.virtual_printer
-                    .capabilities
-            );
             self.capabilities([]);
             for (let cap in self.settingsViewModel.settings.plugins
                 .virtual_printer.capabilities) {
-                console.log(cap);
                 let value = self.settingsViewModel.settings.plugins.virtual_printer.capabilities[
                     cap
                 ]();
@@ -65,7 +60,6 @@ $(function () {
                     cap
                 ].value;
             }
-            console.log(data);
             self.settingsViewModel.settings.plugins.virtual_printer.capabilities = data;
         };
     }
