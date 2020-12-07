@@ -120,8 +120,20 @@
     <div class="control-group">
         <label class="control-label">Reset Lines</label>
         <div class="controls">
-            <input id="resetline_input" type="text" class="input input-xlarge" placeholder="Add a new line..."/><button class="btn btn-primary" data-bind="click: function(){settingsViewModel.settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></button><br>
-            <select size="5" id="resetline_item_remove" style="width: 284px;" data-bind="options: settingsViewModel.settings.plugins.virtual_printer.resetLines" ></select><button class="btn btn-danger" style="vertical-align: bottom;" data-bind="click: function(){console.log($('#resetline_item_remove').val());settingsViewModel.settings.plugins.virtual_printer.resetLines.remove($('#resetline_item_remove').val());$(this).blur();}"><i class="fa fa-trash-o"></i></button>
+            <div class="row-fluid">
+                <div class="input-append">
+                    <input type="text" style="margin-bottom: 5px;" placeholder="Add a new line..." data-bind="textInput: newResetLine">
+                    <button class="btn btn-primary" data-bind="click: addResetLine()"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+            <!-- ko foreach: resetLines() -->
+            <div class="row-fluid">
+                <div class="input-append">
+                    <input type="text" style="margin-bottom: 5px;" data-bind="value: $rawData">
+                    <button class="btn btn-danger" data-bind="click: function() { $parent.deleteResetLine($rawData) }"><i class="fa fa-trash-alt"></i></button>
+                </div>
+            </div>
+            <!-- /ko -->
             <p class="help-block">Lines to send on simulated reset</p>
         </div>
     </div>
@@ -130,8 +142,20 @@
         <label class="control-label">Prepared Oks</label>
         <p data-bind="text: settingsViewModel.settings.plugins.virtual_printer.preparedOks"></p>
         <div class="controls">
-            <input id="preparedOks_input" type="text" class="input input-xlarge" placeholder="Add a new entry..."/><button class="btn btn-primary" data-bind="click: function(){settingsViewModel.settings.plugins.virtual_printer.preparedOks.push(ko.observable($('#preparedOks_input').val()));$('#preparedOks_input').val('');}"><i class="fa fa-plus"></i></button><br>
-            <select size="5" id="preparedOks_item_remove" style="width: 284px;" data-bind="options: settingsViewModel.settings.plugins.virtual_printer.preparedOks" ></select><button class="btn btn-danger" style="vertical-align: bottom;" data-bind="click: function(){console.log($('#preparedOks_item_remove').val());settingsViewModel.settings.plugins.virtual_printer.preparedOks.remove($('#preparedOks_item_remove').val());$(this).blur();}"><i class="fa fa-trash-o"></i></button>
+            <div class="row-fluid">
+                <div class="input-append">
+                    <input type="text" style="margin-bottom: 5px;" placeholder="Add a new entry..." data-bind="textInput: newPreparedOk">
+                    <button class="btn btn-primary" data-bind="click: addPreparedOk()"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+            <!-- ko foreach: preparedOks() -->
+            <div class="row-fluid">
+                <div class="input-append">
+                    <input type="text" style="margin-bottom: 5px;" data-bind="value: $rawData">
+                    <button class="btn btn-danger" data-bind="click: function() { $parent.deletePreparedOk($rawData) }"><i class="fa fa-trash-alt"></i></button>
+                </div>
+            </div>
+            <!-- /ko -->
             <p class="help-block">Initial set of prepared oks to use instead of regular ok (e.g. to simulate mis-sent oks) when connection is first established.</p>
         </div>
     </div>
