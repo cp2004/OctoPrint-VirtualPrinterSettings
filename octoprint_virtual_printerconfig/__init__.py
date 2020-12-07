@@ -44,6 +44,18 @@ class VirtualPrinterSettingsPlugin(
                 "user": "cp2004",
                 "repo": "OctoPrint-VirtualPrinterSettings",
                 "current": self._plugin_version,
+                "stable_branch": {
+                    "name": "Stable",
+                    "branch": "master",
+                    "comittish": ["master"],
+                },
+                "prerelease_branches": [
+                    {
+                        "name": "Release Candidate",
+                        "branch": "pre-release",
+                        "comittish": ["pre-release", "master"],
+                    }
+                ],
                 # update method: pip
                 "pip": "https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/{target_version}.zip",
             }
