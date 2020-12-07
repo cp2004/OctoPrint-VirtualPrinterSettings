@@ -83,7 +83,8 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">M115 Format string</label>
         <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.m115FormatString">
+            <textarea class="input-block-level" data-bind="textInput: settingsViewModel.settings.plugins.virtual_printer.m115FormatString">
+            </textarea>
             <p class="help-block">Format string for M115 output. Placeholders:<br> <code>firmware_name</code>: The firmware name as defined in firmwareName</p>
         </div>
     </div>
