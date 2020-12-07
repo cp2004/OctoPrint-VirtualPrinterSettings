@@ -21,6 +21,11 @@ class VirtualPrinterSettingsPlugin(
             custom_bindings=True,
         )]
 
+    def get_template_vars(self):
+        return {
+            "version": self._plugin_version,
+        }
+
     def get_assets(self):
         return  {
             "js": ["js/virtual_printerconfig.js"],
