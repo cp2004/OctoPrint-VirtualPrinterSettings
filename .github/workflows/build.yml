@@ -25,6 +25,11 @@ jobs:
         with:
           name: dist
           path: dist
+      - name: ⬆ Upload installable archive
+        uses: actions/upload-artifact@v1
+        with:
+          name: VirtualPrinterSettings-${{ github.sha }}
+          path: dist/Virtual\ Printer\ Settings-*.zip
 
   test-install:
     name: 🧪 Installation tests
