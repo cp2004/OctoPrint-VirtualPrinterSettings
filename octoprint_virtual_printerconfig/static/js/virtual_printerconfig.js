@@ -17,6 +17,43 @@ $(function() {
                 return 0
             }
         })
+
+        self.capabilities = ko.observableArray([])
+        self.newCapability = ko.observable()
+
+        self.addCapability = function () {
+            self.capabilities.unshift({
+                name: ko.observable(self.newCapability()),
+                value: ko.observable(true)
+            })
+            self.newCapability("")
+        }
+
+        self.deleteCapability = function (cap) {
+            self.capabilities.remove(cap)
+        }
+
+        self.onAllBound = self.onEventSettingsUpdated = self.onServerReconnect = function() {
+            console.log(self.settingsViewModel.settings.plugins.virtual_printer.capabilities)
+            self.capabilities([])
+            for (let cap in self.settingsViewModel.settings.plugins.virtual_printer.capabilities){
+                console.log(cap)
+                let value = self.settingsViewModel.settings.plugins.virtual_printer.capabilities[cap]()
+                self.capabilities.unshift({
+                    name: ko.observable(cap),
+                    value: ko.observable(value)
+                })
+            }
+        }
+
+        self.onSettingsBeforeSave = function () {
+            var data = {}
+            for (let cap in self.capabilities()){
+                data[self.capabilities()[cap].name()] = self.capabilities()[cap].value
+            }
+            console.log(data)
+            self.settingsViewModel.settings.plugins.virtual_printer.capabilities = data
+        }
     }
     OCTOPRINT_VIEWMODELS.push({
         construct: Virtual_Printer_SettingsViewModel,

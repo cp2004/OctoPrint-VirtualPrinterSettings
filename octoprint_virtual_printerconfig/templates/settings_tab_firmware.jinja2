@@ -119,7 +119,7 @@
     <div class="control-group">
         <label class="control-label">Reset Lines</label>
         <div class="controls">
-            <input id="resetline_input" type="text" class="input input-xlarge" placeholder="Add a new line"/><button class="btn btn-primary" data-bind="click: function(){settingsViewModel.settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></button><br>
+            <input id="resetline_input" type="text" class="input input-xlarge" placeholder="Add a new line..."/><button class="btn btn-primary" data-bind="click: function(){settingsViewModel.settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></button><br>
             <select size="5" id="resetline_item_remove" style="width: 284px;" data-bind="options: settingsViewModel.settings.plugins.virtual_printer.resetLines" ></select><button class="btn btn-danger" style="vertical-align: bottom;" data-bind="click: function(){console.log($('#resetline_item_remove').val());settingsViewModel.settings.plugins.virtual_printer.resetLines.remove($('#resetline_item_remove').val());$(this).blur();}"><i class="fa fa-trash-o"></i></button>
             <p class="help-block">Lines to send on simulated reset</p>
         </div>
@@ -129,15 +129,46 @@
         <label class="control-label">Prepared Oks</label>
         <p data-bind="text: settingsViewModel.settings.plugins.virtual_printer.preparedOks"></p>
         <div class="controls">
-            <input id="preparedOks_input" type="text" class="input input-xlarge" placeholder="Add a new entry"/><button class="btn btn-primary" data-bind="click: function(){settingsViewModel.settings.plugins.virtual_printer.preparedOks.push(ko.observable($('#preparedOks_input').val()));$('#preparedOks_input').val('');}"><i class="fa fa-plus"></i></button><br>
+            <input id="preparedOks_input" type="text" class="input input-xlarge" placeholder="Add a new entry..."/><button class="btn btn-primary" data-bind="click: function(){settingsViewModel.settings.plugins.virtual_printer.preparedOks.push(ko.observable($('#preparedOks_input').val()));$('#preparedOks_input').val('');}"><i class="fa fa-plus"></i></button><br>
             <select size="5" id="preparedOks_item_remove" style="width: 284px;" data-bind="options: settingsViewModel.settings.plugins.virtual_printer.preparedOks" ></select><button class="btn btn-danger" style="vertical-align: bottom;" data-bind="click: function(){console.log($('#preparedOks_item_remove').val());settingsViewModel.settings.plugins.virtual_printer.preparedOks.remove($('#preparedOks_item_remove').val());$(this).blur();}"><i class="fa fa-trash-o"></i></button>
             <p class="help-block">Initial set of prepared oks to use instead of regular ok (e.g. to simulate mis-sent oks) when connection is first established.</p>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">Capability report</label>
-        <div class="controls">
-            <p>Please head to <code>config.yaml</code> to edit the capability report, as described in the virtual printer docs.</p>
+        <div class="controls row">
+            <table>
+                <thead>
+                <tr>
+                    <th style="width: 60%;">
+                        <input style="margin-left: -23px; /*This is a massive hack*/" type="text" data-bind="value: newCapability" placeholder="Add a new line...">
+                    </th>
+                    <th style="width: 30%"></th>
+                    <th style="width: 10%">
+                        <button class="btn btn-primary" data-bind="click: addCapability">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- ko foreach: capabilities -->
+                <tr>
+                    <td>
+                        <input type="text" data-bind="value: name">
+                    </td>
+                    <td>
+                        Enable: <input type="checkbox" data-bind="checked: value">
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" data-bind="click: function() { $parent.deleteCapability($rawData) }">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </td>
+                </tr>
+                <!-- /ko -->
+                </tbody>
+            </table>
         </div>
     </div>
     <br>
