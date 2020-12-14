@@ -3,7 +3,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Ok after resend</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.okAfterResend">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.okAfterResend">
             <p class="help-block">Whether to send an additional "ok" after a resend request (like Repetier)</p>
         </div>
     </div>
@@ -11,7 +11,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Ok with line number</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.okWithLinenumber">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.okWithLinenumber">
             <p class="help-block">Whether to send "ok" responses with the line number that gets acknowledged by the "ok". Defaults to false</p>
         </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Include current tool in temps</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.includeCurrentToolInTemps">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.includeCurrentToolInTemps">
             <p class="help-block">Whether to include the current tool temperature in the M105 output as separate T segment or not.</p>
         </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Repetier style target temperature</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.repetierStyleTargetTemperature">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.repetierStyleTargetTemperature">
             <p class="help-block">If enabled, reports the set target temperatures as separate messages from the firmware</p>
         </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Smoothie style temperature reporting</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.smoothieTemperatureReporting">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.smoothieTemperatureReporting">
             <p class="help-block">If enabled, reports the first extruder in M105 responses as T instead of T0</p>
         </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Ok before command output</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.okBeforeCommandOutput">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.okBeforeCommandOutput">
             <p class="help-block">If enabled, ok will be sent before a commands output, otherwise after or control-label (M105)</p>
         </div>
     </div>
@@ -51,7 +51,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Include filename in opened</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.includeFilenameInOpened">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.includeFilenameInOpened">
             <p class="help-block">Whether to include the selected filename in the M23 File opened response.</p>
         </div>
     </div>
@@ -59,15 +59,22 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Extended file list</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.extendedFileList">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.sdFiles.size">
             <p class="help-block">Whether M20 responses will include filesize or not</p>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Long name reporting</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.sdFiles.longname">
+            <p class="help-block">Whether M20 responses will include longname or not (only if size is checked as well)</p>
         </div>
     </div>
     <br>
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Send wait responses</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.sendWait">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.sendWait">
             <p class="help-block">Whether to send "wait" responses every "Wait Interval" seconds when serial RX buffer is empty</p>
         </div>
     </div>
@@ -75,15 +82,51 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Wait Interval</label>
         <div class="controls">
-            <input type="number" class="input-medium" data-bind="value: settings.plugins.virtual_printer.waitInterval">
+            <input type="number" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.waitInterval">
             <p class="help-block">Interval in which to send "wait" lines when rx buffer is empty</p>
         </div>
     </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Resend ratio</label>
+        <div class="controls">
+            <span data-bind="text: settingsViewModel.settings.plugins.virtual_printer.resend_ratio"></span>
+            <p class="help-block">Ratio of commands that are resent (resend every <span data-bind="text: resend_every_n"></span> lines)</p>
+            <p><span class="label label-warning">Warning</span> This setting is currently disabled since the underlying virtual printer does not support editing it</p>
+            <p>This issue is fixed for future OctoPrint versions (1.6.0+)</p>
+        </div>
+    </div>
+    <br>
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">'ok' string format</label>
         <div class="controls">
-            <input type="text" class="input-medium" data-bind="value: settings.plugins.virtual_printer.okFormatString">
+            <input type="text" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.okFormatString">
             <p class="help-block">Format string for ok response. Placeholders:<br> <code>lastN</code>: Last acknowledged line number<br> <code>buffer</code>: empty slots in internal command buffer</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">M105 Target format</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.m105TargetFormatString">
+            <p class="help-block">
+                Format string for M105 response when there is a target temp. Placeholders:
+                <br> <code>heater</code>: Heater ID (eg. T0, T1, B)
+                <br> <code>actual</code>: The actual temperature of the heater
+                <br> <code>target</code>: The target temperature of the heater
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">M105 No target format</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.m105TargetFormatString">
+            <p class="help-block">
+                Format string for M105 response when there is <strong>no</strong> target temp. Placeholders:
+                <br> <code>heater</code>: Heater ID (eg. T0, T1, B)
+                <br> <code>actual</code>: The actual temperature of the heater
+            </p>
         </div>
     </div>
 </form>

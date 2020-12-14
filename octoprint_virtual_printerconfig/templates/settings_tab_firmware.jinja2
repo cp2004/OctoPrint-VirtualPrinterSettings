@@ -3,7 +3,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-left: 10px">Firmware Name</label>
         <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: settings.plugins.virtual_printer.firmwareName">
+            <input type="text" class="input-block-level" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.firmwareName">
             <p class="help-block">Firmware name to report (useful for testing firmware detection)</p>
         </div>
     </div>
@@ -11,7 +11,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Force checksum</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.forceChecksum">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.forceChecksum">
             <p class="help-block">Whether to force checksums and line number in the communication (like Repetier), if set to true printer will only accept commands that come with linenumber and checksum and throw an error for lines that don't.</p>
         </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">RX Buffer</label>
         <div class="controls">
-            <input type="number" class="input-medium" data-bind="value: settings.plugins.virtual_printer.rxBuffer">
+            <input type="number" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.rxBuffer">
             <p class="help-block">Size of the simulated RX buffer in bytes, when it's full a send from OctoPrint's side will block</p>
         </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Command buffer</label>
         <div class="controls">
-            <input type="number" class="input-medium" data-bind="value: settings.plugins.virtual_printer.commandBuffer">
+            <input type="number" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.commandBuffer">
             <p class="help-block">Size of simulated command buffer, number of commands. If full, buffered commands will block until a slot frees up</p>
         </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Support M112</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.supportM112">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.supportM112">
             <p class="help-block">Whether to support the M112 command with simulated kill</p>
         </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Echo on M117</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.echoOnM117">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.echoOnM117">
             <p class="help-block">Whether to send messages received via M117 back as "echo:" lines</p>
         </div>
     </div>
@@ -51,7 +51,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Broken M29</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.brokenM29">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.brokenM29">
             <p class="help-block">Whether to simulate broken M29 behaviour (missing ok after response)</p>
         </div>
     </div>
@@ -59,7 +59,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Support F command</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.supportF">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.supportF">
             <p class="help-block">Whether F is supported as individual command</p>
         </div>
     </div>
@@ -67,7 +67,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Send 'busy'</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.sendBusy">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.sendBusy">
             <p class="help-block">Send "busy" messages if busy processing something</p>
         </div>
     </div>
@@ -75,7 +75,7 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">Simulate reset</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.simulateReset">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.simulateReset">
             <p class="help-block">Simulate a reset on connect</p>
         </div>
     </div>
@@ -83,7 +83,8 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">M115 Format string</label>
         <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: settings.plugins.virtual_printer.m115FormatString">
+            <textarea class="input-block-level" data-bind="textInput: settingsViewModel.settings.plugins.virtual_printer.m115FormatString">
+            </textarea>
             <p class="help-block">Format string for M115 output. Placeholders:<br> <code>firmware_name</code>: The firmware name as defined in firmwareName</p>
         </div>
     </div>
@@ -91,33 +92,108 @@
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">M115 Report Capabilities</label>
         <div class="controls">
-            <input type="checkbox" data-bind="checked: settings.plugins.virtual_printer.m115ReportCapabilities">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.m115ReportCapabilities">
             <p class="help-block">Whether to include capability report in M115 output</p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Virtual EEPROM</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.enable_eeprom">
+            <p class="help-block">
+                Enable a 'virtual' EEPROM to persist printer configuration across reboots.
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <label class="control-label" style="padding-right: 10px">Support M503</label>
+        <div class="controls">
+            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.support_M503">
+            <p class="help-block">
+                Makes the printer respond current settings on M503 command.
+            </p>
         </div>
     </div>
     <br>
     <div class="control-group">
         <label class="control-label">Reset Lines</label>
         <div class="controls">
-            <input id="resetline_input" type="text" class="input input-xlarge" placeholder="Add a new line"/><button class="btn btn-primary" data-bind="click: function(){settings.plugins.virtual_printer.resetLines.push(ko.observable($('#resetline_input').val()));$('#resetline_input').val('');}"><i class="fa fa-plus"></i></button><br>
-            <select size="5" id="resetline_item_remove" style="width: 284px;" data-bind="options: settings.plugins.virtual_printer.resetLines" ></select><button class="btn btn-danger" style="vertical-align: bottom;" data-bind="click: function(){console.log($('#resetline_item_remove').val());settings.plugins.virtual_printer.resetLines.remove($('#resetline_item_remove').val());$(this).blur();}"><i class="fa fa-trash-o"></i></button>
+            <div class="row-fluid">
+                <div class="input-append">
+                    <input type="text" style="margin-bottom: 5px;" placeholder="Add a new line..." data-bind="textInput: newResetLine">
+                    <button class="btn btn-primary" data-bind="click: addResetLine"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+            <!-- ko foreach: resetLines() -->
+            <div class="row-fluid">
+                <div class="input-append">
+                    <input type="text" style="margin-bottom: 5px;" data-bind="value: $rawData">
+                    <button class="btn btn-danger" data-bind="click: function() { $parent.deleteResetLine($rawData) }"><i class="fa fa-trash-o"></i></button>
+                </div>
+            </div>
+            <!-- /ko -->
             <p class="help-block">Lines to send on simulated reset</p>
         </div>
     </div>
     <br>
     <div class="control-group">
         <label class="control-label">Prepared Oks</label>
-        <p data-bind="text: settings.plugins.virtual_printer.preparedOks"></p>
+        <p data-bind="text: settingsViewModel.settings.plugins.virtual_printer.preparedOks"></p>
         <div class="controls">
-            <input id="preparedOks_input" type="text" class="input input-xlarge" placeholder="Add a new entry"/><button class="btn btn-primary" data-bind="click: function(){settings.plugins.virtual_printer.preparedOks.push(ko.observable($('#preparedOks_input').val()));$('#preparedOks_input').val('');}"><i class="fa fa-plus"></i></button><br>
-            <select size="5" id="preparedOks_item_remove" style="width: 284px;" data-bind="options: settings.plugins.virtual_printer.preparedOks" ></select><button class="btn btn-danger" style="vertical-align: bottom;" data-bind="click: function(){console.log($('#preparedOks_item_remove').val());settings.plugins.virtual_printer.preparedOks.remove($('#preparedOks_item_remove').val());$(this).blur();}"><i class="fa fa-trash-o"></i></button>
+            <div class="row-fluid">
+                <div class="input-append">
+                    <input type="text" style="margin-bottom: 5px;" placeholder="Add a new entry..." data-bind="textInput: newPreparedOk">
+                    <button class="btn btn-primary" data-bind="click: addPreparedOk"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+            <!-- ko foreach: preparedOks() -->
+            <div class="row-fluid">
+                <div class="input-append">
+                    <input type="text" style="margin-bottom: 5px;" data-bind="value: $rawData">
+                    <button class="btn btn-danger" data-bind="click: function() { $parent.deletePreparedOk($rawData) }"><i class="fa fa-trash-o"></i></button>
+                </div>
+            </div>
+            <!-- /ko -->
             <p class="help-block">Initial set of prepared oks to use instead of regular ok (e.g. to simulate mis-sent oks) when connection is first established.</p>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">Capability report</label>
-        <div class="controls">
-            <p>Please head to <code>config.yaml</code> to edit the capability report, as described in the virtual printer docs.</p>
+        <div class="controls row">
+            <table>
+                <thead>
+                <tr>
+                    <th style="width: 60%;">
+                        <input style="margin-left: -23px; /*This is a massive hack*/" type="text" data-bind="value: newCapability" placeholder="Add a new line...">
+                    </th>
+                    <th style="width: 30%"></th>
+                    <th style="width: 10%">
+                        <button class="btn btn-primary" data-bind="click: addCapability">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- ko foreach: capabilities -->
+                <tr>
+                    <td>
+                        <input type="text" data-bind="value: name">
+                    </td>
+                    <td>
+                        Enable: <input type="checkbox" data-bind="checked: value">
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" data-bind="click: function() { $parent.deleteCapability($rawData) }">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </td>
+                </tr>
+                <!-- /ko -->
+                </tbody>
+            </table>
         </div>
     </div>
     <br>

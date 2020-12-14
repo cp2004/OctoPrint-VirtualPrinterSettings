@@ -15,32 +15,29 @@ source: https://github.com/cp2004/OctoPrint-VirtualPrinterSettings
 archive: https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/master.zip
 
 tags:
-- development
-- settings
-- virtual printer
+  - development
+  - settings
+  - virtual printer
 
 # TODO
 screenshots:
-- url: /assets/img/plugins/virtual_printer_2/settings.png
-  alt: alt-text of a screenshot
-  caption: caption of a screenshot
+  - url: /assets/img/plugins/virtual_printer_2/settings.png
+    alt: alt-text of a screenshot
+    caption: caption of a screenshot
 
 featuredimage: /assets/img/plugins/virtual_printer_2/settings.png
 
-
 compatibility:
-
   octoprint:
-  - 1.4.1
+    - 1.4.1
 
   os:
-  - linux
-  - windows
-  - macos
-  - freebsd
+    - linux
+    - windows
+    - macos
+    - freebsd
 
   python: ">=2.7,<4"
-
 ---
 
 Add easily configurable and well organised settings for OctoPrint's virtual printer.

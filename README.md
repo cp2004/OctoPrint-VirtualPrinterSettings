@@ -5,9 +5,20 @@ Overrides the default template which only has an enabling checkbox.
 
 Very useful if you are developing plugins, or even core OctoPrint. No more digging deep into config.yaml and hoping you typed the settings correctly!
 
-### This plugin is not under *active* development, but if you have any problems, or feature requests I would be happy to take a look & see what I can do.
+### This plugin is not under _active_ development, but if you have any problems, or feature requests I would be happy to take a look & see what I can do.
 
-#### Warning: Only compatible with OctoPrint 1.4.1 and higher, please update!
+## Compatibility
+
+The lastest version of the plugin is only compatible with OctoPrint 1.5.x.
+To find a version compatible with your instance, take a look in the table below
+
+| OctoPrint version | Plugin version | Install URL                                                                    |
+| ----------------- | -------------- | ------------------------------------------------------------------------------ |
+| 1.5.x             | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.0.zip` |
+| 1.4.1/2           | 0.1.3          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/0.1.3.zip` |
+
+Use the above URLs in OctoPrint's [Plugin Manager](https://docs.octoprint.org/en/master/bundledplugins/pluginmanager.html) >
+Get More > ...from URL field.
 
 ## Setup
 
@@ -15,7 +26,6 @@ Install via the bundled [Plugin Manager](https://docs.octoprint.org/en/master/bu
 or manually using this URL:
 
     https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/master.zip
-
 
 ## Configuration
 
