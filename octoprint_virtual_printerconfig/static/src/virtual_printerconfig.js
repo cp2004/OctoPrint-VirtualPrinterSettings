@@ -6,7 +6,7 @@
  */
 const $ = window.$
 const ko = window.ko
-const OCTOPRINT_VIEWMODELS = window.ko
+const OCTOPRINT_VIEWMODELS = window.OCTOPRINT_VIEWMODELS
 
 $(function () {
   function VirtualPrinterSettingsViewModel (parameters) {
@@ -63,60 +63,71 @@ $(function () {
       self.preparedOks.remove(cap)
     }
 
+    /*
+     * This was way too confusing so I had to write it down...
+     *
+     * The settings data structure for CAPABILITIES
+     * capabilities: {CAP: observable(true/false), CAP2: observable(true/false)}
+     * turns to =>
+     * capabilities: [
+     *   {name: observables(CAP), capability: observable(true/false)},
+     *   {name: observable(CAP2), value: observable(true/false)}
+     * ]
+     *
+     * settings data structure for RESET LINES
+     * resetLines: observable(array)
+     * where the array is of format:
+     * [line, line2]
+     * turns to =>
+     * resetLines: observableArray([observable(line), observable(line2)])
+     *
+     * settings data structure for PREPARED OKs
+     * preparedOks: observable(array)
+     * where the array is of format:
+     * [ok, ok2]
+     * turns to =>
+     * preparedOks: observableArray([observable(ok), observable(ok2)])
+     */
+
     self.onAllBound = self.onEventSettingsUpdated = self.onServerReconnect = function () {
       self.capabilities([])
-      for (const cap in self.settingsViewModel.settings.plugins
-        .virtual_printer.capabilities) {
-        const value = self.settingsViewModel.settings.plugins.virtual_printer.capabilities[
-          cap
-        ]()
-        self.capabilities.unshift({
+      Object.keys(self.settingsViewModel.settings.plugins.virtual_printer.capabilities).forEach(cap => {
+        self.capabilities.push({
           name: ko.observable(cap),
-          value: ko.observable(value)
+          value: ko.observable(self.settingsViewModel.settings.plugins.virtual_printer.capabilities[cap]())
         })
-      }
+      })
+
       self.resetLines([])
-      for (const line in self.settingsViewModel.settings.plugins.virtual_printer.resetLines()) {
-        const value = self.settingsViewModel.settings.plugins.virtual_printer.resetLines()[
-          line
-        ]
-        self.resetLines.unshift(ko.observable(value))
-      }
+      self.settingsViewModel.settings.plugins.virtual_printer.resetLines().forEach(line => {
+        self.resetLines.push(ko.observable(line))
+      })
+
       self.preparedOks([])
-      for (const line in self.settingsViewModel.settings.plugins.virtual_printer.preparedOks()) {
-        const value = self.settingsViewModel.settings.plugins.virtual_printer.preparedOks()[
-          line
-        ]
-        self.preparedOks.unshift(ko.observable(value))
-      }
+      self.settingsViewModel.settings.plugins.virtual_printer.preparedOks().forEach(line => {
+        self.preparedOks.push(ko.observable(line))
+      })
     }
 
     self.onSettingsBeforeSave = function () {
       const data = {}
-      for (const cap in self.capabilities()) {
-        data[self.capabilities()[cap].name()] = self.capabilities()[
-          cap
-        ].value
-      }
+      self.capabilities().forEach(cap => {
+        data[cap.name()] = cap.value
+      })
       self.settingsViewModel.settings.plugins.virtual_printer.capabilities = data
 
-      self.settingsViewModel.settings.plugins.virtual_printer.resetLines(
-        []
-      )
-      for (const line in self.resetLines()) {
-        self.settingsViewModel.settings.plugins.virtual_printer.resetLines.push(
-          self.resetLines()[line]
-        )
-      }
+      const resetLines = []
+      self.resetLines().forEach(line => {
+        resetLines.push(line())
+      })
+      self.settingsViewModel.settings.plugins.virtual_printer.resetLines(resetLines)
 
-      self.settingsViewModel.settings.plugins.virtual_printer.preparedOks(
-        []
-      )
-      for (const line in self.preparedOks()) {
-        self.settingsViewModel.settings.plugins.virtual_printer.preparedOks.push(
-          self.preparedOks()[line]
-        )
-      }
+      const preparedOks = []
+      self.settingsViewModel.settings.plugins.virtual_printer.preparedOks([])
+      self.preparedOks().forEach(line => {
+        preparedOks.push(line())
+      })
+      self.settingsViewModel.settings.plugins.virtual_printer.preparedOks(preparedOks)
     }
   }
   OCTOPRINT_VIEWMODELS.push({
