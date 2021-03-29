@@ -7,6 +7,7 @@
 const $ = window.$
 const ko = window.ko
 const OCTOPRINT_VIEWMODELS = window.OCTOPRINT_VIEWMODELS
+const observable = ko.observable
 
 $(function () {
   function VirtualPrinterSettingsViewModel (parameters) {
@@ -15,30 +16,24 @@ $(function () {
     self.settingsViewModel = parameters[0]
 
     self.resend_every_n = ko.pureComputed(function () {
-      if (
-        self.settingsViewModel.settings.plugins.virtual_printer.resend_ratio() >
-                0
-      ) {
-        return Math.floor(
-          100 /
-                        self.settingsViewModel.settings.plugins.virtual_printer.resend_ratio()
-        )
+      if (self.settingsViewModel.settings.plugins.virtual_printer.resend_ratio() > 0) {
+        return Math.floor(100 / self.settingsViewModel.settings.plugins.virtual_printer.resend_ratio())
       } else {
         return 0
       }
     })
 
     self.capabilities = ko.observableArray([])
-    self.newCapability = ko.observable()
+    self.newCapability = observable()
     self.resetLines = ko.observableArray([])
-    self.newResetLine = ko.observable()
+    self.newResetLine = observable()
     self.preparedOks = ko.observableArray([])
-    self.newPreparedOk = ko.observable()
+    self.newPreparedOk = observable()
 
     self.addCapability = function () {
       self.capabilities.unshift({
-        name: ko.observable(self.newCapability()),
-        value: ko.observable(true)
+        name: observable(self.newCapability()),
+        value: observable(true)
       })
       self.newCapability('')
     }
@@ -47,7 +42,7 @@ $(function () {
     }
 
     self.addResetLine = function () {
-      self.resetLines.unshift(ko.observable(self.newResetLine()))
+      self.resetLines.unshift(observable(self.newResetLine()))
       self.newResetLine('')
     }
     self.deleteResetLine = function (cap) {
@@ -55,7 +50,7 @@ $(function () {
     }
 
     self.addPreparedOk = function () {
-      self.preparedOks.unshift(ko.observable(self.newPreparedOk()))
+      self.preparedOks.unshift(observable(self.newPreparedOk()))
       self.newPreparedOk('')
     }
 
@@ -93,19 +88,19 @@ $(function () {
       self.capabilities([])
       Object.keys(self.settingsViewModel.settings.plugins.virtual_printer.capabilities).forEach(cap => {
         self.capabilities.push({
-          name: ko.observable(cap),
-          value: ko.observable(self.settingsViewModel.settings.plugins.virtual_printer.capabilities[cap]())
+          name: observable(cap),
+          value: observable(self.settingsViewModel.settings.plugins.virtual_printer.capabilities[cap]())
         })
       })
 
       self.resetLines([])
       self.settingsViewModel.settings.plugins.virtual_printer.resetLines().forEach(line => {
-        self.resetLines.push(ko.observable(line))
+        self.resetLines.push(observable(line))
       })
 
       self.preparedOks([])
       self.settingsViewModel.settings.plugins.virtual_printer.preparedOks().forEach(line => {
-        self.preparedOks.push(ko.observable(line))
+        self.preparedOks.push(observable(line))
       })
     }
 
