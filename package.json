@@ -1,0 +1,50 @@
+{
+  "name": "octoprint-virtualprintersettings",
+  "version": "1.5.1",
+  "description": "Adds UI configurable settings to the Virtual Printer plugin in OctoPrint",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cp2004/OctoPrint-VirtualPrinterSettings.git"
+  },
+  "keywords": [
+    "octoprint"
+  ],
+  "author": "Charlie Powell",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/issues"
+  },
+  "homepage": "https://github.com/cp2004/OctoPrint-VirtualPrinterSettings#readme",
+  "dependencies": {
+    "@babel/core": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1"
+  }
+}

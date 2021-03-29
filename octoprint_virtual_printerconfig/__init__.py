@@ -30,7 +30,7 @@ class VirtualPrinterSettingsPlugin(
 
     def get_assets(self):
         return {
-            "js": ["js/virtual_printerconfig.js"],
+            "js": ["dist/virtual_printerconfig.js"],
         }
 
     # Softwareupdate hook

@@ -9,3 +9,4 @@ dist
 *.zip
 resources
 .vscode
+node_modules
