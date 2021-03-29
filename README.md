@@ -26,6 +26,23 @@ Install via the bundled [Plugin Manager](https://docs.octoprint.org/en/master/bu
 or manually using this URL:
 
     https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/master.zip
+    
+## Contribution (local development for JS)
+
+* Install: `npm install`
+* Build JS assets in development mode: `npm run dev`
+* Build assets in production mode: `npm run build`
+
+If you can't build the assets locally but want to make a small change, I can build it 🙂
+
+**Pre-commit**
+
+* `pre-commit run --hook-stage manual --all-files` to run all of the checks
+
+**ESLint (JS)**
+
+* This is checked by pre-commit, but in case you want to automatically fix things run `eslint --fix`. Many IDEs have support for this built in.
+
 
 ## Configuration
 
