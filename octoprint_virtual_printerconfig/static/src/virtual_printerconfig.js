@@ -15,13 +15,11 @@ $(function () {
 
     self.settingsViewModel = parameters[0]
 
-    self.resend_every_n = ko.pureComputed(function () {
-      if (self.settingsViewModel.settings.plugins.virtual_printer.resend_ratio() > 0) {
-        return Math.floor(100 / self.settingsViewModel.settings.plugins.virtual_printer.resend_ratio())
-      } else {
-        return 0
-      }
-    })
+    self.resend_every_n = ko.pureComputed(() => (
+      self.settingsViewModel.settings.plugins.virtual_printer.resend_ratio() > 0
+        ? Math.floor(100 / self.settingsViewModel.settings.plugins.virtual_printer.resend_ratio())
+        : 0
+    ))
 
     self.capabilities = ko.observableArray([])
     self.newCapability = observable()
