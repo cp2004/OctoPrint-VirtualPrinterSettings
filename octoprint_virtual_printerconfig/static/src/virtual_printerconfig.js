@@ -125,6 +125,7 @@ $(function () {
   }
   OCTOPRINT_VIEWMODELS.push({
     construct: VirtualPrinterSettingsViewModel,
+    name: "VirtualPrinterSettingsViewModel",
     dependencies: ['settingsViewModel'],
     elements: ['#settings_plugin_virtual_printerconfig']
   })
