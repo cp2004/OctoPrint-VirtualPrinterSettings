@@ -14,7 +14,7 @@ To find a version compatible with your instance, take a look in the table below
 
 | OctoPrint version | Plugin version | Install URL                                                                    |
 | ----------------- | -------------- | ------------------------------------------------------------------------------ |
-| 1.5.x             | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.0.zip` |
+| 1.5.x -1.6.x            | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.1.zip` |
 | 1.4.1/2           | 0.1.3          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/0.1.3.zip` |
 
 Use the above URLs in OctoPrint's [Plugin Manager](https://docs.octoprint.org/en/master/bundledplugins/pluginmanager.html) >
