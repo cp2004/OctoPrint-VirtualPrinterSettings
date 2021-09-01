@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/cp2004/OctoPrint-VirtualPrinterSettings#readme",
   "dependencies": {
-    "@babel/core": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.14.9",
     "babel-loader": "^8.2.2",
     "webpack": "^5.47.1",
