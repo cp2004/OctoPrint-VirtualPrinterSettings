@@ -51,3 +51,9 @@ Plugin adds settings to OctoPrint's UI that are [documented here](https://docs.o
 It replaces the original implementation, introduced in OctoPrint 1.4.1
 
 ![screenshot](extras/settings.png)
+
+## Sponsors
+
+* Sponsor
+
+## 🔨
