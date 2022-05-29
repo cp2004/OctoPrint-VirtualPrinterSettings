@@ -58,7 +58,7 @@ It replaces the original implementation, introduced in OctoPrint 1.4.1
 * [@iFrostizz](https://github.com/iFrostizz)
 * [@KenLucke](https://github.com/KenLucke)
 
-As well as 7 others supporting me through [GitHub Sponsors](https://github.com/sponsors/cp2004)!
+As well as 5 others supporting me regularly through [GitHub Sponsors](https://github.com/sponsors/cp2004)!
 
 ## Supporting my efforts
 
