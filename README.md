@@ -54,6 +54,7 @@ It replaces the original implementation, introduced in OctoPrint 1.4.1
 
 ## Sponsors
 
+* [SimplyPrint](https://simplyprint.io/)
 * [@iFrostizz](https://github.com/iFrostizz)
 * [@KenLucke](https://github.com/KenLucke)
 
