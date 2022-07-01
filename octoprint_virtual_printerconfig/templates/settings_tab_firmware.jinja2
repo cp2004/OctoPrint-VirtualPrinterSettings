@@ -38,6 +38,9 @@
     <br>
     {{ macros.checkbox_input("support_M503", "Support M503", "Makes the printer respond current settings on M503 command") }}
     <br>
+    {{ macros.checkbox_input("locked", "Printer locked on startup", "Enable the printer lock on startup") }}
+    <br>
+    {{ macros.number_input("passcode", "Printer lock passcode", "The passcode to unlock the printer (with M511)") }}
     <div class="control-group">
         <label class="control-label">Reset Lines</label>
         <div class="controls">
