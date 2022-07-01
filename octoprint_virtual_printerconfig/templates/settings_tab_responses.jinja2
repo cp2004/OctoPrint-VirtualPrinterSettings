@@ -20,6 +20,8 @@
     <br>
     {{ macros.checkbox_input("sdFiles.longname", "Long name reporting", "Whether M20 responses will include longname or not (only if size is checked as well)") }}
     <br>
+    {{ macros.checkbox_input("sdFiles.longname_quoted", "Quoted long name reporting", "Whether the filenames in the long M20 responses will be quoted") }}
+    <br>
     {{ macros.checkbox_input("sendWait", "Send wait responses", "Whether to send \"wait\" responses every \"Wait Interval\" seconds when serial RX buffer is empty") }}
     <br>
     {{ macros.number_input("waitInterval", "Wait Interval", "Interval in which to send \"wait\" lines when rx buffer is empty") }}
