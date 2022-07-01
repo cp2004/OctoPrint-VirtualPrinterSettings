@@ -9,16 +9,25 @@ Very useful if you are developing plugins, or even core OctoPrint. No more diggi
 
 ## Compatibility
 
-The lastest version of the plugin is only compatible with OctoPrint 1.5.x.
+### OctoPrint
+
+The latest version of the plugin is only tested with OctoPrint 1.8.x.
 To find a version compatible with your instance, take a look in the table below
 
 | OctoPrint version | Plugin version | Install URL                                                                    |
-| ----------------- | -------------- | ------------------------------------------------------------------------------ |
-| 1.5.x -1.6.x      | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.1.zip` |
-| 1.4.1/2           | 0.1.3          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/0.1.3.zip` |
+|-------------------|----------------| ------------------------------------------------------------------------------ |
+| 1.8.x onwards     | 2022.7.XX      | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/2022.7.01.zip` |
+| 1.5.x -1.7.x      | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.1.zip` |
+| 1.4.x             | 0.1.3          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/0.1.3.zip` |
 
 Use the above URLs in OctoPrint's [Plugin Manager](https://docs.octoprint.org/en/master/bundledplugins/pluginmanager.html) >
 Get More > ...from URL field.
+
+### Browser
+
+This plugin uses some modern browser features and as a result it won't work correctly on older browsers that do not support
+ES6 JS features. I've tested it on modern Chromium-based browsers, and it works fine for me, if you have issues with a particular
+browser, please let me know.
 
 ## Setup
 
@@ -27,21 +36,14 @@ or manually using this URL:
 
     https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/master.zip
 
-## Contribution (local development for JS)
+## Contribution
 
-- Install: `npm install`
-- Build JS assets in development mode: `npm run dev`
-- Build assets in production mode: `npm run build`
-
-If you can't build the assets locally but want to make a small change, I can build it 🙂
+Contributions are welcome, there is nothing too special about developing this plugin. If you can run the pre-commit
+checks below after your changes are made that would be great.
 
 **Pre-commit**
 
 - `pre-commit run --hook-stage manual --all-files` to run all of the checks
-
-**ESLint (JS)**
-
-- This is checked by pre-commit, but in case you want to automatically fix things run `eslint --fix`. Many IDEs have support for this built in.
 
 ## Configuration
 

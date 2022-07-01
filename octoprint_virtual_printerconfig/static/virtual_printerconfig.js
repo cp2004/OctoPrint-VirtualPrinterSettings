@@ -4,11 +4,6 @@
  * Author: Charlie
  * License: AGPLv3
  */
-const $ = window.$
-const ko = window.ko
-const OCTOPRINT_VIEWMODELS = window.OCTOPRINT_VIEWMODELS
-const observable = ko.observable
-
 $(function () {
   function VirtualPrinterSettingsViewModel (parameters) {
     const self = this
@@ -22,16 +17,16 @@ $(function () {
     ))
 
     self.capabilities = ko.observableArray([])
-    self.newCapability = observable()
+    self.newCapability = ko.observable()
     self.resetLines = ko.observableArray([])
-    self.newResetLine = observable()
+    self.newResetLine = ko.observable()
     self.preparedOks = ko.observableArray([])
-    self.newPreparedOk = observable()
+    self.newPreparedOk = ko.observable()
 
     self.addCapability = function () {
       self.capabilities.unshift({
-        name: observable(self.newCapability()),
-        value: observable(true)
+        name: ko.observable(self.newCapability()),
+        value: ko.observable(true)
       })
       self.newCapability('')
     }
@@ -40,7 +35,7 @@ $(function () {
     }
 
     self.addResetLine = function () {
-      self.resetLines.unshift(observable(self.newResetLine()))
+      self.resetLines.unshift(ko.observable(self.newResetLine()))
       self.newResetLine('')
     }
     self.deleteResetLine = function (cap) {
@@ -48,7 +43,7 @@ $(function () {
     }
 
     self.addPreparedOk = function () {
-      self.preparedOks.unshift(observable(self.newPreparedOk()))
+      self.preparedOks.unshift(ko.observable(self.newPreparedOk()))
       self.newPreparedOk('')
     }
 
@@ -86,19 +81,19 @@ $(function () {
       self.capabilities([])
       Object.keys(self.settingsViewModel.settings.plugins.virtual_printer.capabilities).forEach(cap => {
         self.capabilities.push({
-          name: observable(cap),
-          value: observable(self.settingsViewModel.settings.plugins.virtual_printer.capabilities[cap]())
+          name: ko.observable(cap),
+          value: ko.observable(self.settingsViewModel.settings.plugins.virtual_printer.capabilities[cap]())
         })
       })
 
       self.resetLines([])
       self.settingsViewModel.settings.plugins.virtual_printer.resetLines().forEach(line => {
-        self.resetLines.push(observable(line))
+        self.resetLines.push(ko.observable(line))
       })
 
       self.preparedOks([])
       self.settingsViewModel.settings.plugins.virtual_printer.preparedOks().forEach(line => {
-        self.preparedOks.push(observable(line))
+        self.preparedOks.push(ko.observable(line))
       })
     }
 
@@ -125,7 +120,7 @@ $(function () {
   }
   OCTOPRINT_VIEWMODELS.push({
     construct: VirtualPrinterSettingsViewModel,
-    name: "VirtualPrinterSettingsViewModel",
+    name: 'VirtualPrinterSettingsViewModel',
     dependencies: ['settingsViewModel'],
     elements: ['#settings_plugin_virtual_printerconfig']
   })
