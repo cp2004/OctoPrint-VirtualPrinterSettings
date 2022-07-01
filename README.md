@@ -14,7 +14,7 @@ To find a version compatible with your instance, take a look in the table below
 
 | OctoPrint version | Plugin version | Install URL                                                                    |
 | ----------------- | -------------- | ------------------------------------------------------------------------------ |
-| 1.5.x -1.6.x            | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.1.zip` |
+| 1.5.x -1.6.x      | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.1.zip` |
 | 1.4.1/2           | 0.1.3          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/0.1.3.zip` |
 
 Use the above URLs in OctoPrint's [Plugin Manager](https://docs.octoprint.org/en/master/bundledplugins/pluginmanager.html) >
@@ -26,23 +26,22 @@ Install via the bundled [Plugin Manager](https://docs.octoprint.org/en/master/bu
 or manually using this URL:
 
     https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/master.zip
-    
+
 ## Contribution (local development for JS)
 
-* Install: `npm install`
-* Build JS assets in development mode: `npm run dev`
-* Build assets in production mode: `npm run build`
+- Install: `npm install`
+- Build JS assets in development mode: `npm run dev`
+- Build assets in production mode: `npm run build`
 
 If you can't build the assets locally but want to make a small change, I can build it 🙂
 
 **Pre-commit**
 
-* `pre-commit run --hook-stage manual --all-files` to run all of the checks
+- `pre-commit run --hook-stage manual --all-files` to run all of the checks
 
 **ESLint (JS)**
 
-* This is checked by pre-commit, but in case you want to automatically fix things run `eslint --fix`. Many IDEs have support for this built in.
-
+- This is checked by pre-commit, but in case you want to automatically fix things run `eslint --fix`. Many IDEs have support for this built in.
 
 ## Configuration
 
@@ -54,13 +53,14 @@ It replaces the original implementation, introduced in OctoPrint 1.4.1
 
 ## Sponsors
 
-* [SimplyPrint](https://simplyprint.io/)
-* [@iFrostizz](https://github.com/iFrostizz)
-* [@KenLucke](https://github.com/KenLucke)
+- [SimplyPrint](https://simplyprint.io/)
+- [@iFrostizz](https://github.com/iFrostizz)
+- [@KenLucke](https://github.com/KenLucke)
 
 As well as 5 others supporting me regularly through [GitHub Sponsors](https://github.com/sponsors/cp2004)!
 
 ## Supporting my efforts
 
 I created this project in my spare time, so if you have found it useful or enjoyed using it then please consider [supporting it's development!](https://github.com/sponsors/cp2004). You can sponsor monthly or one time, for any amount you choose.
+
 ## 🔨
