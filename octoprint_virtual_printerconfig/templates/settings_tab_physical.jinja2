@@ -1,43 +1,15 @@
+{% import "macros.jinja2" as macros %}
+
 <h4>Physical properties</h4>
 <form class="form-horizontal">
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Number of Extruders</label>
-        <div class="controls">
-            <input type="number" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.numExtruders"/>
-            <p class="help-block">Whether to send an additional "ok" after a resend request (like Repetier)</p>
-        </div>
-    </div>
+    {{ macros.number_input("numExtruders", "Number of Extruders", "Number of extruders to simulate on the virtual printer") }}
     <br/>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Has bed</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.hasBed"/>
-            <p class="help-block">Whether the simulated printer should also simulate a heated bed or not.</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("hasBed", "Has bed", "Whether the simulated printer should also simulate a heated bed or not") }}
     <br/>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Has chamber</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.hasChamber"/>
-            <p class="help-block">Whether the simulated printer should also simulate a heated chamber or not.</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("hasChamber", "Has chamber", "Whether the simulated printer should also simulate a heated chamber or not") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Shared Nozzle</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.sharedNozzle"/>
-            <p class="help-block">Whether the simulated printer should also simulate a shared nozzle.</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("sharedNozzle", "Shared Nozzle", "Whether the simulated printer should also simulate a shared nozzle or not") }}
     <br/>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Ambient Temperature</label>
-        <div class="controls">
-            <input type="number" step="0.1" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.ambientTemperature"/>
-            <p class="help-block">Simulated ambient temperature in °C</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("ambientTemperature", "Ambient Temperature", "Simulated ambient temperature in °C") }}
     <!-- Pinned Extruders are not available, as I think the config might be broken... -->
 </form>

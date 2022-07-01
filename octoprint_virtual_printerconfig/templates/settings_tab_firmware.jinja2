@@ -1,84 +1,27 @@
+{% import "macros.jinja2" as macros %}
+
 <h4>Firmware properties</h4>
+
 <form class="form-horizontal">
-    <div class="control-group">
-        <label class="control-label" style="padding-left: 10px">Firmware Name</label>
-        <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.firmwareName">
-            <p class="help-block">Firmware name to report (useful for testing firmware detection)</p>
-        </div>
-    </div>
+    {{ macros.text_input("firmwareName", "Firmware Name", "Firmware name to report (useful for testing firmware detection)") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Force checksum</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.forceChecksum">
-            <p class="help-block">Whether to force checksums and line number in the communication (like Repetier), if set to true printer will only accept commands that come with linenumber and checksum and throw an error for lines that don't.</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("forceChecksum", "Force checksum", "Whether to force checksums and line number in the communication (like Repetier), if set to true printer will only accept commands that come with linenumber and checksum and throw an error for lines that don't.") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">RX Buffer</label>
-        <div class="controls">
-            <input type="number" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.rxBuffer">
-            <p class="help-block">Size of the simulated RX buffer in bytes, when it's full a send from OctoPrint's side will block</p>
-        </div>
-    </div>
+    {{ macros.number_input("rxBuffer", "RX Buffer", "Size of the simulated RX buffer in bytes, when it's full a send from OctoPrint's side will block") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Command buffer</label>
-        <div class="controls">
-            <input type="number" class="input-medium" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.commandBuffer">
-            <p class="help-block">Size of simulated command buffer, number of commands. If full, buffered commands will block until a slot frees up</p>
-        </div>
-    </div>
+    {{ macros.number_input("commandBuffer", "Command Buffer", "Size of the simulated command buffer, number of commands. If full, buffered commands will block until a slot frees up") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Support M112</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.supportM112">
-            <p class="help-block">Whether to support the M112 command with simulated kill</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("supportM112", "Support M112", "Whether to support the M112 command with simulated kill") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Echo on M117</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.echoOnM117">
-            <p class="help-block">Whether to send messages received via M117 back as "echo:" lines</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("echoOnM117", "Echo on M117", "Whether to send messages received via M117 back as \"echo:\" lines") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Broken M29</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.brokenM29">
-            <p class="help-block">Whether to simulate broken M29 behaviour (missing ok after response)</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("brokenM29", "Broken M29", "Whether to simulate broken M29 behaviour (missing ok after response)") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Support F command</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.supportF">
-            <p class="help-block">Whether F is supported as individual command</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("supportF", "Support F command", "Whether F is supported as an individual command") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Send 'busy'</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.sendBusy">
-            <p class="help-block">Send "busy" messages if busy processing something</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("sendBusy", "Send 'busy'", "Send \"busy\" messages if busy processing something") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Simulate reset</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.simulateReset">
-            <p class="help-block">Simulate a reset on connect</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("simulateReset", "Simulate reset", "Simulate a reset on connect") }}
     <br>
     <div class="control-group">
         <label class="control-label" style="padding-right: 10px">M115 Format string</label>
@@ -89,33 +32,11 @@
         </div>
     </div>
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">M115 Report Capabilities</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.m115ReportCapabilities">
-            <p class="help-block">Whether to include capability report in M115 output</p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("m115ReportCapabilities", "M115 Report Capabilities", "Whether to include capability report in M115 output") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Virtual EEPROM</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.enable_eeprom">
-            <p class="help-block">
-                Enable a 'virtual' EEPROM to persist printer configuration across reboots.
-            </p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("enable_eeprom", "Enable Virtual EEPROM", "Enable a 'virtual' EEPROM to persist imaginary printer configuration across reboots.") }}
     <br>
-    <div class="control-group">
-        <label class="control-label" style="padding-right: 10px">Support M503</label>
-        <div class="controls">
-            <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.support_M503">
-            <p class="help-block">
-                Makes the printer respond current settings on M503 command.
-            </p>
-        </div>
-    </div>
+    {{ macros.checkbox_input("support_M503", "Support M503", "Makes the printer respond current settings on M503 command") }}
     <br>
     <div class="control-group">
         <label class="control-label">Reset Lines</label>

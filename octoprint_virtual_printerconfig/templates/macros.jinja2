@@ -1,0 +1,31 @@
+{% macro input(setting_id, label, input_type, description=None) %}
+<div class="control-group">
+    <label class="control-label" for="vpc_{{ setting_id }}" style="padding-right: 10px">{{ label }}</label>
+    <div class="controls">
+        <input type="text" class="form-control" id="vpc_{{ setting_id }}" data-bind="value: settingsViewModel.settings.plugins.virtual_printer.{{ setting_id }}">
+        {% if description %}
+        <p class="help-block">{{ description }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
+
+{% macro text_input(setting_id, label, description=None) %}
+{{ input(setting_id, label, 'text', description) }}
+{% endmacro %}
+
+{% macro number_input(setting_id, label, description=None) %}
+{{ input(setting_id, label, 'number', description) }}
+{% endmacro %}
+
+{% macro checkbox_input(setting_id, label, description=None) %}
+<div class="control-group">
+    <label class="control-label" for="vpc_{{ setting_id }}" style="padding-right: 10px">{{ label }}</label>
+    <div class="controls">
+        <input type="checkbox" class="form-control" id="vpc_{{ setting_id }}" data-bind="checked: settingsViewModel.settings.plugins.virtual_printer.{{ setting_id }}">
+        {% if description %}
+        <p class="help-block">{{ description }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
