@@ -14,11 +14,11 @@ Very useful if you are developing plugins, or even core OctoPrint. No more diggi
 The latest version of the plugin is only tested with OctoPrint 1.8.x.
 To find a version compatible with your instance, take a look in the table below
 
-| OctoPrint version | Plugin version | Install URL                                                                    |
-|-------------------|----------------| ------------------------------------------------------------------------------ |
-| 1.8.x onwards     | 2022.07.01     | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/2022.7.01.zip` |
-| 1.5.x -1.7.x      | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.1.zip` |
-| 1.4.x             | 0.1.3          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/0.1.3.zip` |
+| OctoPrint version | Plugin version | Install URL                                                                        |
+|-------------------|----------------|------------------------------------------------------------------------------------|
+| 1.8.x onwards     | 2022.07.04     | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/2022.7.04.zip` |
+| 1.5.x -1.7.x      | 1.5.x          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/1.5.1.zip`     |
+| 1.4.x             | 0.1.3          | `https://github.com/cp2004/OctoPrint-VirtualPrinterSettings/archive/0.1.3.zip`     |
 
 Use the above URLs in OctoPrint's [Plugin Manager](https://docs.octoprint.org/en/master/bundledplugins/pluginmanager.html) >
 Get More > ...from URL field.
