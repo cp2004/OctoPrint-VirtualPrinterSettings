@@ -1,6 +1,6 @@
 include README.md
-recursive-include octoprint_virtual_printer_settings/templates *
-recursive-include octoprint_virtual_printer_settings/translations *
-recursive-include octoprint_virtual_printer_settings/static *
+recursive-include octoprint_virtual_printerconfig/templates *
+recursive-include octoprint_virtual_printerconfig/translations *
+recursive-include octoprint_virtual_printerconfig/static *
 include versioneer.py
 include octoprint_virtual_printerconfig/_version.py
